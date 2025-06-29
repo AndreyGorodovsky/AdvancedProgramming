@@ -1,11 +1,5 @@
 # AdvancedProg – MiniHTTP + Reactive Graph Implementation
 
-Light-weight Java 8 playground & library that combines:
-
-* A **blocking HTTP/1.1 server** with a pluggable servlet model (no external jars).
-* A **reactive computation graph** where agents and topics exchange messages.
-* Helpers to export the graph as HTML for quick debugging.
-
 The code was produced as part of the Advanced Programming course (BIU) and is dependency-free, so you can copy-paste the **entire `AdvancedProg/` folder** (sources, HTML templates, sample config files and generated docs) into any Java 8+ project or package it as a JAR.
 
 ---

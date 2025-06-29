@@ -1,13 +1,12 @@
 # IntelliJ project files
 .idea/
 
-# Build output
-# root-level build dirs
-+/out/
-+/project_biu/out/
+# Build output directories
+out/
+project_biu/out/
 
-# VS Code folder
-+.vscode/
+# VS Code settings
+.vscode/
 
 # Ignore IDEA/Gradle/Maven module files
 *.iml
@@ -16,4 +15,3 @@
 # OS-specific
 .DS_Store
 Thumbs.db
-
