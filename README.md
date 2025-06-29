@@ -3,6 +3,14 @@
 The code was produced as part of the Advanced Programming course (BIU) and is dependency-free, so you can copy-paste the **entire `AdvancedProg/` folder** (sources, HTML templates, sample config files and generated docs) into any Java 8+ project or package it as a JAR.
 
 ---
+## Javadoc
+
+In the project folder go to `docs` folder.
+Open `index.html`.
+
+Or in the IDE drag `index.html` to the browser.
+
+---
 ## Background
 This project simulates a network of **agents** that exchange messages via **topics**.
 
