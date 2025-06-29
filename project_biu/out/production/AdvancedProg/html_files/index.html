@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>System View</title>
+    <style>
+        body, html { height: 100%; margin: 0; padding: 0; }
+        #container { display: flex; height: 100vh; }
+        #left, #center, #right { height: 100vh; border: none; }
+        #left { width: 20vw; }
+        #center { width: 50vw; }
+        #right { width: 30vw; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <iframe id="left" src="from.html" name="left"></iframe>
+        <iframe id="center" src="temp.html" name="center"></iframe>
+        <iframe id="right" src="temp.html" name="right"></iframe>
+    </div>
+</body>
+</html>

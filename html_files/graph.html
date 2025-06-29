@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Graph Display</title>
+    <style>
+        body { margin: 0; padding: 0; display: flex; align-items: center; justify-content: center; height: 100vh; background: #f9f9f9; }
+        #network { border: 1px solid #ccc; background: #fff; width: 800px; height: 600px; }
+    </style>
+    <!-- vis-network CDN -->
+    <link href="https://unpkg.com/vis-network@9.1.2/styles/vis-network.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/vis-network@9.1.2/dist/vis-network.min.js"></script>
+</head>
+<body>
+    <div id="network"></div>
+    <!--GRAPH_DATA-->
+    <script>
+    if (typeof nodes !== 'undefined' && typeof edges !== 'undefined') {
+        const visNodes = nodes.map(n => {
+            const isAgent = n.type === 'agent';
+            const label = n.type === 'agent' ? n.name + "\n" + n.equation : (n.value ? n.value + "\n" + n.name : n.name);
+            const base = {
+                id: n.name,
+                label: label,
+                color: { background: isAgent ? '#4caf50' : '#8bc34a', border: '#333' },
+                font: { size: 14, color: '#ffffff' }
+            };
+            if (isAgent) {
+                base.shape = 'circle';
+                base.size = 35;
+            } else {
+                base.shape = 'box';
+                base.widthConstraint = { minimum: 50 };
+                base.heightConstraint = { minimum: 50 };
+            }
+            return base;
+        });
+
+        const visEdges = edges.map(e => ({ from: e.from, to: e.to, arrows: 'to', color: '#5588aa' }));
+
+        const container = document.getElementById('network');
+        const data = { nodes: new vis.DataSet(visNodes), edges: new vis.DataSet(visEdges) };
+        const options = {
+            interaction: { dragNodes: true },
+            physics: { enabled: false },
+            layout: { randomSeed: 2 }
+        };
+        new vis.Network(container, data, options);
+
+        const nodesDataSet = data.nodes;
+        async function refreshTopics() {
+            try {
+                const res = await fetch('/topics');
+                if (!res.ok) return;
+                const list = await res.json();
+                list.forEach(t => {
+                    const nodeId = t.name;
+                    const node = nodesDataSet.get(nodeId);
+                    if (node) {
+                        const newLabel = (t.value ? t.value + "\n" + t.name : t.name);
+                        if (node.label !== newLabel) {
+                            nodesDataSet.update({ id: nodeId, label: newLabel });
+                        }
+                    }
+                });
+            } catch (e) { /* ignore */ }
+        }
+        window.refreshTopics = refreshTopics;
+        refreshTopics();
+    } else {
+        document.getElementById('network').innerHTML = '<p style="text-align:center;margin-top:280px;color:#888;font-family:Arial">Graph will be displayed here.</p>';
+    }
+    </script>
+</body>
+</html> 

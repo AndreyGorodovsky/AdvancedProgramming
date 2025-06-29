@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forms</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { margin-bottom: 30px; padding: 10px; border: 1px solid #ccc; border-radius: 8px; }
+        label { display: block; margin-bottom: 8px; }
+        input[type="text"], input[type="file"] { width: 90%; margin-bottom: 10px; }
+        button { padding: 6px 16px; border-radius: 4px; border: none; background: #007bff; color: #fff; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <form action="http://localhost:8080/upload" method="POST" enctype="multipart/form-data" target="center">
+        <h3>Upload Configuration</h3>
+        <label for="configFile">Select config file:</label>
+        <input type="file" id="configFile" name="configFile" required>
+        <button type="submit">Deploy</button>
+    </form>
+    <form action="http://localhost:8080/publish" method="GET" target="right">
+        <h3>Publish Message</h3>
+        <label for="topic">Topic:</label>
+        <input type="text" id="topic" name="topic" required>
+        <label for="message">Message:</label>
+        <input type="number" step="any" id="message" name="message" required>
+        <button type="submit">Publish</button>
+    </form>
+</body>
+</html> 
