@@ -17,7 +17,7 @@ This project simulates a network of **agents** that exchange messages via **topi
 ### Core concepts
 | Term | What it is | Example |
 |------|------------|---------|
-| **Topic** | Named channel that stores the *latest* {@link graph.Message}. Agents can subscribe&nbsp;(`topic.subscribe(agent)`) or publish (`topic.publish(msg)`). | `T1`, `Temperature`, `CumulativeSum` |
+| **Topic** | Named channel that stores the *latest* {@link graph.Message}. Agents can subscribe&nbsp;(`topic.subscribe(agent)`) or publish (`topic.publish(msg)`). | `A`, `B`, `C` |
 | **Message** | Immutable payload (text, bytes and lazy-double). | `"42"`, `"18.5"` |
 | **Agent** | Node that reacts to incoming messages and usually publishes a result to another topic. | `IncAgent` adds 1, `PlusAgent` sums two topics, `ParallelAgent` wraps any agent in its own thread |
 
